@@ -1,0 +1,14 @@
+{
+  "name": "file-upload",
+  "version": "1.0.0",
+  "description": "Simple file uploader",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/craffate/file-upload.git"
+  },
+  "author": "Cyril Raffatelli",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/craffate/file-upload/issues"
+  }
+}
