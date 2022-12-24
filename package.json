@@ -2,6 +2,7 @@
   "name": "file-upload",
   "version": "1.0.0",
   "description": "Simple file uploader",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/craffate/file-upload.git"
@@ -10,5 +11,11 @@
   "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/craffate/file-upload/issues"
-  }
+  },
+  "scripts": {
+    "start:api": "nest start"
+  },
+  "workspaces": [
+    "apps/api"
+  ]
 }
