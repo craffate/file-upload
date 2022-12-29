@@ -12,9 +12,6 @@
   "bugs": {
     "url": "https://github.com/craffate/file-upload/issues"
   },
-  "scripts": {
-    "start:api": "nest start"
-  },
   "workspaces": [
     "apps/api"
   ]
