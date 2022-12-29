@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { DataSource } from 'typeorm';
 import { ApiController } from './api.controller';
 import { File } from './file.entity';
+import { FileService } from './file/file.service';
 
 @Module({
   imports: [
@@ -18,8 +18,8 @@ import { File } from './file.entity';
     })
   ],
   controllers: [ApiController],
-  providers: [],
+  providers: [FileService],
 })
 export class ApiModule {
-  constructor(private dataSource: DataSource) {}
+  constructor() {}
 }

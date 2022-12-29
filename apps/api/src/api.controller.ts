@@ -1,12 +1,22 @@
-import { Controller, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
+import { Controller, Get, Param, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { File } from './file.entity';
+import { FileService } from './file/file.service';
 
 @Controller()
 export class ApiController {
-  constructor() {}
+  constructor(
+    private fileService: FileService
+  ) {}
 
   @Post("upload")
   @UseInterceptors(FileInterceptor('file', { dest: './uploads' }))
-  uploadFile(@UploadedFile() file: Express.Multer.File) {
+  uploadFile(@UploadedFile() file: Express.Multer.File): void {
+    this.fileService.uploadFile(file);
+  }
+
+  @Get(":filename")
+  getFileByName(@Param('filename') filename: string): Promise<File | null> {
+    return this.fileService.getFileByName(filename);
   }
 }
