@@ -11,8 +11,8 @@ export class ApiController {
 
   @Post("upload")
   @UseInterceptors(FileInterceptor('file', { dest: './uploads' }))
-  uploadFile(@UploadedFile() file: Express.Multer.File): void {
-    this.fileService.uploadFile(file);
+  uploadFile(@UploadedFile() file: Express.Multer.File): Promise<File> {
+    return this.fileService.uploadFile(file);
   }
 
   @Get(":filename")

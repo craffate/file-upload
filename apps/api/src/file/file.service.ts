@@ -12,8 +12,8 @@ export class FileService {
         this._fileRepository = this.dataSource.getRepository(File);
     }
 
-    uploadFile(file: Express.Multer.File): void {
-        this._fileRepository.save(file);
+    uploadFile(file: Express.Multer.File): Promise<File> {
+        return this._fileRepository.save(file);
     }
 
     getFileByName(name: string): Promise<File | null> {
