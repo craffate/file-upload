@@ -13,6 +13,7 @@
     "url": "https://github.com/craffate/file-upload/issues"
   },
   "workspaces": [
-    "apps/api"
+    "apps/api",
+    "apps/web"
   ]
 }
