@@ -23,10 +23,6 @@ export class FileService {
   }
 
   getFileByName(name: string) {
-    const req = this.http.get(this._api);
-
-    req.subscribe(v => {
-      console.log(v);
-    })
+    return this.http.get(this._api + `/${name}`, { responseType: 'blob' });
   }
 }
