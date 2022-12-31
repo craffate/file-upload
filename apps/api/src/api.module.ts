@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ApiController } from './api.controller';
 import { File } from './file.entity';
 import { FileService } from './file/file.service';
+import { FileController } from './file/file.controller';
 
 @Module({
   imports: [
@@ -17,7 +18,7 @@ import { FileService } from './file/file.service';
       synchronize: true,
     })
   ],
-  controllers: [ApiController],
+  controllers: [ApiController, FileController],
   providers: [FileService],
 })
 export class ApiModule {
