@@ -1,0 +1,6 @@
+<input type="file" (change)="onFileSelect($event)">
+<button (click)="uploadFile()">Upload</button>
+<ng-container *ngIf="link">
+  <hr>
+  <a [href]="link">{{ link }}</a>
+</ng-container>

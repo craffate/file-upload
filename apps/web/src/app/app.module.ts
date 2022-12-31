@@ -5,10 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { FileComponent } from './file/file.component';
+import { UploadComponent } from './upload/upload.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FileComponent,
+    UploadComponent
   ],
   imports: [
     BrowserModule,
