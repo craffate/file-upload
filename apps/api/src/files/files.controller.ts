@@ -3,13 +3,13 @@ import type { Response } from 'express';
 import { createReadStream, ReadStream } from 'fs';
 import { join } from 'path';
 import { File } from '../file.entity';
-import { FileService } from './file.service';
+import { FilesService } from './files.service';
 
-@Controller('file')
-export class FileController {
+@Controller('files')
+export class FilesController {
 
     constructor(
-        private fileService: FileService
+        private fileService: FilesService
     ) {}
 
     @Get(":filename")
@@ -25,5 +25,12 @@ export class FileController {
         'Content-Disposition': `attachment; filename="${file.filename}"`
       })
       return new StreamableFile(fileStream);
+    }
+
+    @Get(":filename/info")
+    getFileInfoByName(
+      @Param('filename') filename: string
+    ): Promise<File> {
+      return this.fileService.getFileByName(filename);
     }
 }

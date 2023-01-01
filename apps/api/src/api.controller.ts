@@ -1,12 +1,12 @@
 import { Controller, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { File } from './file.entity';
-import { FileService } from './file/file.service';
+import { FilesService } from './files/files.service';
 
 @Controller()
 export class ApiController {
   constructor(
-    private fileService: FileService
+    private fileService: FilesService
   ) {}
 
   @Post("upload")

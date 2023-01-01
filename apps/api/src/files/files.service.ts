@@ -3,7 +3,7 @@ import { DataSource, Repository } from 'typeorm';
 import { File } from '../file.entity';
 
 @Injectable()
-export class FileService {
+export class FilesService {
     private readonly _fileRepository: Repository<File>;
 
     constructor(
