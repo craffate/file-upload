@@ -22,7 +22,7 @@ export class FileService {
     return this.http.post<Express.Multer.File>(this._api + "/upload", formData);
   }
 
-  getFileByName(name: string) {
-    return this.http.get(this._api + `/${name}`, { responseType: 'blob' });
+  getFileByName(name: string): Observable<Blob> {
+    return this.http.get(this._api + `/file/${name}`, { responseType: 'blob' });
   }
 }
