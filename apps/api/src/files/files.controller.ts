@@ -1,4 +1,5 @@
-import { Controller, Get, Param, Res, StreamableFile, } from '@nestjs/common';
+import { Controller, Get, Param, Post, Res, StreamableFile, UploadedFile, UseInterceptors, } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 import type { Response } from 'express';
 import { createReadStream, ReadStream } from 'fs';
 import { join } from 'path';
@@ -11,6 +12,12 @@ export class FilesController {
     constructor(
         private fileService: FilesService
     ) {}
+
+    @Post()
+    @UseInterceptors(FileInterceptor('file', { dest: './uploads' }))
+    uploadFile(@UploadedFile() file: Express.Multer.File): Promise<File> {
+      return this.fileService.uploadFile(file);
+    }
 
     @Get(":filename")
     async getFileByName(
