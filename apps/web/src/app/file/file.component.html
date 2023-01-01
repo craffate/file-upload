@@ -1,2 +1,6 @@
-<hr>
+<ul *ngIf="fileInfo">
+  <li>Name: {{ fileInfo.filename }}</li>
+  <li>Type: {{ fileInfo.mimetype }}</li>
+  <li>Size: {{ fileInfo.size }} bytes</li>
+</ul>
 <button (click)="downloadFile()">Download</button>

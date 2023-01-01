@@ -24,4 +24,8 @@ export class FileService {
   getFileByName(name: string): Observable<Blob> {
     return this.http.get(this._api + `/files/${name}`, { responseType: 'blob' });
   }
+
+  getFileInfoByName(name: string): Observable<Express.Multer.File> {
+    return this.http.get<Express.Multer.File>(this._api + `/files/${name}/info`);
+  }
 }
