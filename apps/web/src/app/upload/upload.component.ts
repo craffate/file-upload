@@ -24,7 +24,7 @@ export class UploadComponent {
   uploadFile(): void {
     if (null !== this._file) {
       this.fileService.uploadFile(this._file).subscribe(v => {
-        this.link = this.location.prepareExternalUrl("file/" + v.filename);
+        this.link = this.location.prepareExternalUrl("files/" + v.filename);
       });
     }
   }

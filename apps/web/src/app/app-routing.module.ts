@@ -5,7 +5,7 @@ import { UploadComponent } from './upload/upload.component';
 
 const routes: Routes = [
   { path: '', component: UploadComponent},
-  { path: 'file/:id', component: FileComponent },
+  { path: 'files/:id', component: FileComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
