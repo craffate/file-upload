@@ -1,17 +1,18 @@
 <div class="center">
-  <div>
-    <button mat-flat-button color="primary" (click)="fileInput.click()">
-      <mat-icon>file_open</mat-icon>
-      Select file
-      <input #fileInput type="file" (change)="onFileSelect($event)" style="display: none;">
-    </button>
-    <p>{{ filename }}</p>
-  </div>
+  <button mat-flat-button color="primary" (click)="fileInput.click()">
+    <mat-icon>file_open</mat-icon>
+    Select file
+    <input #fileInput type="file" (change)="onFileSelect($event)" style="display: none;">
+  </button>
+  <span id="filename">{{ filename }}</span>
   <button mat-stroked-button color="accent" (click)="uploadFile()">
     <mat-icon>upload</mat-icon>
     Upload
   </button>
   <ng-container *ngIf="link">
-    <a [href]="link">{{ link }}</a>
+    <div id="link-container">
+      <mat-divider></mat-divider>
+      <a [href]="link">{{ link }}</a>
+    </div>
   </ng-container>
 </div>
