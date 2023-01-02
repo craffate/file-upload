@@ -8,16 +8,16 @@ import { Location } from '@angular/common';
   styleUrls: ['./upload.component.sass']
 })
 export class UploadComponent {
-  private readonly _formData: FormData;
   private _file: File | null;
+  filename: string;
   link: string | null;
 
   constructor(
     private fileService: FileService,
     private location: Location
   ) {
-    this._formData = new FormData();
     this._file = null;
+    this.filename = "No file selected.";
     this.link = null;
   }
 
@@ -34,6 +34,9 @@ export class UploadComponent {
 
     if (null !== el.files) {
       this._file = el.files.item(0);
+    }
+    if (this._file) {
+      this.filename = this._file.name;
     }
   }
 

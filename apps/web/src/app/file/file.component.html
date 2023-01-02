@@ -1,6 +1,19 @@
-<ul *ngIf="fileInfo">
-  <li>Name: {{ fileInfo.filename }}</li>
-  <li>Type: {{ fileInfo.mimetype }}</li>
-  <li>Size: {{ fileInfo.size }} bytes</li>
-</ul>
-<button (click)="downloadFile()">Download</button>
+<h3>File information</h3>
+<mat-list *ngIf="fileInfo">
+  <mat-list-item>
+    <span matListItemTitle>Name</span>
+    <span matListItemLine>{{ fileInfo.filename }}</span>
+  </mat-list-item>
+  <mat-list-item>
+    <span matListItemTitle>Type</span>
+    <span matListItemLine>{{ fileInfo.mimetype }}</span>
+  </mat-list-item>
+  <mat-list-item>
+    <span matListItemTitle>Size</span>
+    <span matListItemLine>{{ fileInfo.size }} bytes</span>
+  </mat-list-item>
+</mat-list>
+<button mat-raised-button color="primary" (click)="downloadFile()">
+  <mat-icon>download</mat-icon>
+  Download
+</button>
