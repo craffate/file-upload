@@ -11,7 +11,7 @@
     </mat-list-item>
     <mat-list-item>
       <span matListItemTitle>Size</span>
-      <span matListItemLine>{{ fileInfo.size }} bytes</span>
+      <span matListItemLine>{{ fileInfo.size | size }}</span>
     </mat-list-item>
   </mat-list>
   <button mat-raised-button color="primary" (click)="downloadFile()">
