@@ -28,10 +28,78 @@ $web-theme: mat.define-light-theme((
   )
 ));
 
+$my-dark-primary-text: #000000;
+$my-light-primary-text: #ffffff;
+
+$my-primary-palette: (
+  50: #fff8e0,
+  100: #ffedb0,
+  200: #ffe17c,
+  300: #ffd743,
+  400: #ffcc00,
+  500: #ffc300,
+  600: #ffb500,
+  700: #ffa100,
+  800: #ff8f00,
+  900: #ff6d00,
+  contrast: (
+    50: $my-dark-primary-text,
+    100: $my-dark-primary-text,
+    200: $my-dark-primary-text,
+    300: $my-dark-primary-text,
+    400: $my-dark-primary-text,
+    500: $my-dark-primary-text,
+    600: $my-dark-primary-text,
+    700: $my-dark-primary-text,
+    800: $my-dark-primary-text,
+    900: $my-dark-primary-text
+  )
+);
+
+$my-accent-palette: (
+  50: #ede7ff,
+  100: #d0c5ff,
+  200: #af9eff,
+  300: #8976ff,
+  400: #6556ff,
+  500: #2f37ff,
+  600: #0033ff,
+  700: #002cf7,
+  800: #0027f1,
+  900: #001bed,
+  contrast: (
+    50: $my-light-primary-text,
+    100: $my-light-primary-text,
+    200: $my-light-primary-text,
+    300: $my-light-primary-text,
+    400: $my-light-primary-text,
+    500: $my-light-primary-text,
+    600: $my-light-primary-text,
+    700: $my-light-primary-text,
+    800: $my-light-primary-text,
+    900: $my-light-primary-text
+  )
+);
+
+$my-primary: mat.define-palette($my-primary-palette, 400);
+$my-accent: mat.define-palette($my-accent-palette, 400);
+$my-warn: mat.define-palette(mat.$red-palette);
+
+$my-theme: mat.define-light-theme((
+  color: (
+    primary: $my-primary,
+    accent: $my-accent,
+    warn: $my-warn,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0,
+));
+
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include mat.all-component-themes($web-theme);
+@include mat.core-theme($my-theme);
+@include mat.all-component-themes($my-theme);
 
 
 html, body { height: 100%; }
