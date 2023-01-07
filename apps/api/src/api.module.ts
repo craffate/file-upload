@@ -8,14 +8,10 @@ import { FilesController } from './files/files.controller';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: 'mariadb',
-      host: 'localhost',
-      port: 3306,
-      username: process.env.MYSQL_USER,
-      password: process.env.MYSQL_PASSWORD,
-      database: 'file_upload',
+      type: 'sqlite',
+      database: 'file_upload.db',
       entities: [File],
-      synchronize: true,
+      synchronize: process.env.NODE_ENV === 'development' ? true : false,
     })
   ],
   controllers: [ApiController, FilesController],
