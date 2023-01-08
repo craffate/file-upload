@@ -11,7 +11,7 @@ export class FileService {
   constructor(
     private http: HttpClient
   ) {
-    this._api = "http://localhost:3000";
+    this._api = "/api";
   }
 
   uploadFile(file: File): Observable<Express.Multer.File> {
