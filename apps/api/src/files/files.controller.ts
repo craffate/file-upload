@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Post, Res, StreamableFile, UploadedFile, UseInterceptors, } from '@nestjs/common';
+import { Controller, Get, HttpStatus, Param, Post, Res, StreamableFile, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import type { Response } from 'express';
 import { createReadStream, ReadStream } from 'fs';
@@ -15,8 +15,18 @@ export class FilesController {
 
     @Post()
     @UseInterceptors(FileInterceptor('file', { dest: './uploads' }))
-    uploadFile(@UploadedFile() file: Express.Multer.File): Promise<File> {
-      return this.fileService.uploadFile(file);
+    async uploadFile(
+      @UploadedFile() file: Express.Multer.File,
+      @Res({passthrough: true}) res: Response<File>
+      ): Promise<File> {
+      const ret = await this.fileService.uploadFile(file);
+      let statusCode = HttpStatus.INTERNAL_SERVER_ERROR
+
+      if (ret) {
+        statusCode = HttpStatus.CREATED
+      }
+      res.statusCode = statusCode
+      return ret
     }
 
     @Get(":filename")
