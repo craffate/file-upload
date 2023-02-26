@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FileService } from '../file.service';
 import { Location } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-upload',
@@ -14,7 +15,8 @@ export class UploadComponent {
 
   constructor(
     private fileService: FileService,
-    private location: Location
+    private location: Location,
+    private _snackBar: MatSnackBar
   ) {
     this._file = null;
     this.filename = "No file selected.";
@@ -23,9 +25,15 @@ export class UploadComponent {
 
   uploadFile(): void {
     if (null !== this._file) {
-      this.fileService.uploadFile(this._file).subscribe(v => {
-        this.link = this.location.prepareExternalUrl("files/" + v.filename);
-      });
+      this.fileService.uploadFile(this._file).subscribe(
+        (v) => {
+          this.openSnackBar('File uploaded successfully')
+          this.link = this.location.prepareExternalUrl("files/" + v.filename);
+        },
+        (err) => {
+          this.openSnackBar('Error uploading your file')
+        }
+      );
     }
   }
 
@@ -38,6 +46,10 @@ export class UploadComponent {
     if (this._file) {
       this.filename = this._file.name;
     }
+  }
+
+  private openSnackBar(message: string) {
+    this._snackBar.open(message)
   }
 
 }
