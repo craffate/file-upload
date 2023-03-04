@@ -15,7 +15,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
-import { MatProgressBarModule } from '@angular/material/progress-bar'
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 import { SizePipe } from './size.pipe';
 
 
@@ -37,7 +38,8 @@ import { SizePipe } from './size.pipe';
     MatListModule,
     MatDividerModule,
     MatSnackBarModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    ClipboardModule
   ],
   providers: [{ provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 3000 } }],
   bootstrap: [AppComponent]

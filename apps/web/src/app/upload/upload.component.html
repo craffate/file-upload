@@ -15,9 +15,12 @@
   color="primary"
   mode="determinate"
   [value]="uploadProgress"></mat-progress-bar>
-  <a
-  *ngIf="link"
-  [href]="link">
-  {{ link }}
-  </a>
+  <ng-container *ngIf="link">
+    <div>
+      <a [href]="link">{{ uploadedFileName }}</a>
+      <button mat-icon-button color="accent" (click)="copyLink()">
+        <mat-icon>content_copy</mat-icon>
+      </button>
+    </div>
+  </ng-container>
 </div>
