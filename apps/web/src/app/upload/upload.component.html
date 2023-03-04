@@ -9,10 +9,15 @@
     <mat-icon>upload</mat-icon>
     Upload
   </button>
-  <ng-container *ngIf="link">
-    <div id="link-container">
-      <mat-divider></mat-divider>
-      <a [href]="link">{{ link }}</a>
-    </div>
-  </ng-container>
+  <mat-divider></mat-divider>
+  <mat-progress-bar
+  *ngIf="0 < uploadProgress && uploadProgress < 100"
+  color="primary"
+  mode="determinate"
+  [value]="uploadProgress"></mat-progress-bar>
+  <a
+  *ngIf="link"
+  [href]="link">
+  {{ link }}
+  </a>
 </div>

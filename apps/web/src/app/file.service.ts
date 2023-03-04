@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpProgressEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -14,11 +14,11 @@ export class FileService {
     this._api = "/api";
   }
 
-  uploadFile(file: File): Observable<Express.Multer.File> {
+  uploadFile(file: File): Observable<HttpEvent<unknown>> {
     const formData = new FormData();
 
     formData.append("file", file, file.name);
-    return this.http.post<Express.Multer.File>(this._api + "/files", formData);
+    return this.http.post<Express.Multer.File>(this._api + "/files", formData, { observe: 'events', reportProgress: true, responseType: 'json' });
   }
 
   getFileByName(name: string): Observable<Blob> {
